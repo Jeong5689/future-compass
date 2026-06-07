@@ -146,6 +146,21 @@ export default function App() {
     }
   };
 
+  // Support direct hash links: scroll on initial load if URL contains hash
+  React.useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) {
+        // small timeout to allow layout to settle
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          setActiveTab(hash);
+        }, 200);
+      }
+    }
+  }, []);
+
   // AI Chatbot trigger logic
   const handleChatSubmit = async (e: FormEvent) => {
     e.preventDefault();

@@ -68,9 +68,13 @@ export default function Navbar({ onNavigate, activeTab }: NavbarProps) {
           {/* Desktop Nav Items */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.target}
-                onClick={() => handleItemClick(item.target)}
+                href={`#${item.target}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleItemClick(item.target);
+                }}
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 relative ${
                   activeTab === item.target
                     ? "text-[#D4AF37]"
@@ -81,7 +85,7 @@ export default function Navbar({ onNavigate, activeTab }: NavbarProps) {
                 {activeTab === item.target && (
                   <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#D4AF37] rounded-full" />
                 )}
-              </button>
+              </a>
             ))}
           </div>
 
@@ -113,9 +117,13 @@ export default function Navbar({ onNavigate, activeTab }: NavbarProps) {
         <div className="lg:hidden bg-[#102542] border-b border-white/5 shadow-2xl animate-fade-in">
           <div className="px-2 pt-2 pb-4 space-y-1">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.target}
-                onClick={() => handleItemClick(item.target)}
+                href={`#${item.target}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleItemClick(item.target);
+                }}
                 className={`w-full text-left block px-4 py-3 rounded-xl text-base font-medium transition-all ${
                   activeTab === item.target
                     ? "bg-[#D4AF37]/10 text-[#D4AF37] font-semibold"
@@ -123,7 +131,7 @@ export default function Navbar({ onNavigate, activeTab }: NavbarProps) {
                 }`}
               >
                 {item.label}
-              </button>
+              </a>
             ))}
             <div className="pt-2 px-4 shadow-sm">
               <button
