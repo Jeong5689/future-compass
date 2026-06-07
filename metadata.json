@@ -1,0 +1,6 @@
+{
+  "name": "Future Compass",
+  "description": "프리미엄 진로 · 학습 · 입시 설계 에듀테크 플랫폼 - Future Compass. 당신의 가능성을 진로로 연결합니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
