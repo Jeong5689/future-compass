@@ -146,21 +146,6 @@ export default function App() {
     }
   };
 
-  // Support direct hash links: scroll on initial load if URL contains hash
-  React.useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash) {
-      const el = document.getElementById(hash);
-      if (el) {
-        // small timeout to allow layout to settle
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          setActiveTab(hash);
-        }, 200);
-      }
-    }
-  }, []);
-
   // AI Chatbot trigger logic
   const handleChatSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -370,7 +355,7 @@ export default function App() {
                   </div>
 
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold text-white">김미래 소장</h3>
+                    <h3 className="text-2xl font-bold text-white">오정택 소장</h3>
                     <p className="text-sm text-[#D4AF37] font-semibold tracking-wider mt-1">Future Compass 대표 컨설턴트</p>
                     <div className="mt-4 flex flex-wrap gap-2 justify-center">
                       <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-slate-300">교육학 전공</span>
@@ -382,11 +367,11 @@ export default function App() {
                   <div className="w-full mt-6 pt-6 border-t border-white/5 space-y-2.5 text-xs text-slate-300">
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3FA9F5]" />
-                      <span>서울 주요 대학 진학 지도 경력 15년 이상</span>
+                      <span>대학 진학 지도 경력 25년 이상</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3FA9F5]" />
-                      <span>대기업 및 고교 진로특강 다수 (누적 500+회)</span>
+                      <span>대기업 및 고교 진로특강 다수 (누적 100+회)</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#3FA9F5]" />
@@ -1653,11 +1638,11 @@ export default function App() {
 
           <div className="space-y-4 max-w-2xl mx-auto">
             <p className="leading-relaxed">
-              상호명: Future Compass (퓨처 컴파스 교육컨설팅) | 대표자: 김미래 소장 | 사업자등록번호: 120-77-54321
+              상호명: Future Compass (퓨처 컴파스 교육컨설팅) | 대표자: 오정택 소장 | 사업자등록번호: 120-77-54321
               <br />
-              본사 소재지: 서울특별시 강남구 대치동 테헤란로 777 에듀타워 11층
+              본사 소재지: 서울특별시 서초구 강남대로 6길 100-20 202호
               <br />
-              고객만족팀: 02-1234-5678 | 개인정보 관리 책임자: 최민혁 팀장
+              고객만족팀: 02-1234-5678 | 개인정보 관리 책임자: 000 팀장
             </p>
             <p className="text-[10px] text-slate-600">
               © 2026 Future Compass Premium Business platforms. All rights reserved. 본 웹사이트의 성향 진단 예측 분석 엔진 및 콘텐츠 전재는 무단 복제를 금합니다.

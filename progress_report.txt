@@ -1,0 +1,54 @@
+Future Compass — 진행 요약
+작성일: 2026-06-07
+
+요약
+- 목적: 프로젝트 전반 오류 확인 및 수정, 전체 빌드 테스트 및 브라우저/API 검증
+- 상태: 로컬 개발 및 프로덕션 빌드 성공, 번들된 서버 실행 확인, 주요 API 엔드포인트 정상 동작(데모 모드)
+
+주요 작업 이력
+1) 의존성 설치 및 타입 검사
+  - 명령: `npm install`
+  - 명령: `npm run lint` (`tsc --noEmit`) -> 타입 검사 통과
+
+2) 런타임 개발 서버
+  - 명령: `npm run dev` -> 개발 서버 실행 확인 (http://0.0.0.0:3000)
+
+3) 코드 수정을 시도함
+  - 파일: `src/App.tsx`
+  - 변경: `ChevronRight` 중복 alias 제거 및 사용 통일 (일부 수정이 유저에 의해 되돌려진 기록 있음)
+
+4) 프로덕션 빌드 및 서버 번들 생성
+  - 명령: `npm run build` (Vite 빌드 + esbuild 서버 번들)
+  - 결과: `dist/` 산출물 생성, `dist/server.cjs` 생성 완료
+
+5) 번들된 서버 실행(통합 검증)
+  - 명령: `npm run start`
+  - 결과: 서버 실행 확인 → 출력: "[Future Compass] Server running on http://0.0.0.0:3000"
+
+6) API 및 브라우저 점검
+  - 점검: `curl -I http://127.0.0.1:3000/` -> 200 OK
+  - 점검: `curl -I http://127.0.0.1:3000/index.html` -> 200 OK
+  - 점검: `/api/gemini/chatbot` -> 데모 응답 JSON (GEMINI_API_KEY 미설정 시 시뮬레이션)
+  - 점검: `/api/gemini/career-analysis` -> 데모 JSON (요청 바디 전달 후 정상 JSON 반환)
+  - 점검: `/api/gemini/futuristic-career` -> 데모 JSON
+  - 메모: Windows CMD에서 `curl` 사용 시 JSON 인용 문제로 `Invalid messages array.` 같은 오류 발생함. PowerShell 권장 혹은 큰따옴표 이스케이프 필요.
+
+7) Git 커밋 (로컬)
+  - 시도: `git init`, 사용자 정보 설정 및 `git add -A && git commit -m "chore: build verification and small import fix"`
+  - 커밋 생성: 6d052d89905777f22aeade07327db9b04f037652
+  - 작성자: Jeong5689 <ojt7470@gmail.com>
+  - 변경: 18 files, 7140 insertions (커밋 로그 요약 포함)
+
+권장 다음 단계
+- 원격 저장소(`origin`)가 설정되어 있지 않다면 `git remote add origin <URL>` 후 `git push -u origin master` 수행
+- 실제 Gemini API 테스트를 위한 `GEMINI_API_KEY`를 `.env`에 추가하고 서버 재시작
+- 브라우저에서 UI 수동 점검 및 콘솔 에러 확인
+- 서버측 요청 유효성 검사/로깅 강화(원하면 `server.ts`에 패치 가능)
+
+복원/추가 변경 사항
+- 사용자가 `src/App.tsx`의 변경을 되돌린 기록이 있음. 필요 시 중복 import 정리 패치를 재적용 가능.
+
+파일 위치
+- 프로젝트 루트: progress_report.txt
+
+끝.
